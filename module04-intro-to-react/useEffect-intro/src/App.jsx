@@ -10,12 +10,11 @@ const handleResize = (e) => console.log(e);
 function App() {
   // State für einen Zähler - wird mit 0 initialisiert
   const [counter, setCounter] = useState(0);
+  // Auskommentiert: So würde eine normale Variable aussehen (aber State ist besser für React!)
+  // let counter = 0;
 
   // State für die aktuelle Farbe - wird mit 'green' initialisiert
   const [color, setColor] = useState('green');
-
-  // Auskommentiert: So würde eine normale Variable aussehen (aber State ist besser für React!)
-  // let counter = 0;
 
   // State für ein Objekt - demonstriert komplexere State-Strukturen
   const [someObj, setSomeObj] = useState({
@@ -25,6 +24,8 @@ function App() {
 
   // Auskommentierter Code: So NICHT machen!
   // Fetch direkt im Component Body würde bei jedem Re-Render ausgeführt werden
+  // Weil ein State Setter aufgerufen wird, wird diese funktionale Komponente hier neu ausgeführt.
+  // Ergebnis: ein unendlicher Loop
   // fetch('https://jsonplaceholder.typicode.com/todos/1')
   //   .then((response) => response.json())
   //   .then((json) => setCounter((p) => p + 1));
