@@ -1,11 +1,6 @@
-import Home from "./pages/Home";
-import About from "./pages/About";
-import Contact from "./pages/Contact";
-import Users from "./pages/Users";
-import UserProfile from "./pages/UserProfile";
-import Layout from "./layouts/Layout";
-import NotFound from "./pages/NotFound";
-import { Routes, Route } from "react-router";
+import { Route, Routes } from "react-router";
+import { Layout } from "./layouts";
+import { About, Contact, Home, NotFound, UserProfile, Users } from "./pages";
 
 const App = () => {
   return (

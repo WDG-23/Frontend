@@ -1,12 +1,15 @@
 import { Outlet } from "react-router";
-import NavBar from "../components/NavBar";
+import { NavBar } from "../components/shared";
+import { useState } from "react";
 
 const Layout = () => {
+  const [signedIn, setSignedIn] = useState(false);
+
   return (
     <div>
-      <NavBar />
+      <NavBar signedIn={signedIn} setSignedIn={setSignedIn} />
       <main>
-        <Outlet />
+        <Outlet context={{ signedIn, setSignedIn }} />
       </main>
     </div>
   );

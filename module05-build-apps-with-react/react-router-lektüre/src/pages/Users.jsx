@@ -1,8 +1,15 @@
 import { Link } from "react-router";
 import { useUsers } from "../hooks/useUserData";
+import { useOutletContext } from "react-router";
 
 const Users = () => {
   const users = useUsers();
+
+  const { signedIn } = useOutletContext();
+
+  if (!signedIn) {
+    return <h1>Bitte einloggen!</h1>;
+  }
 
   return (
     <div className="p-4">

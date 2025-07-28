@@ -1,10 +1,16 @@
 import { Link } from "react-router";
 
-const NavBar = () => {
+const NavBar = ({ signedIn, setSignedIn }) => {
+  const handleClick = () => {
+    setSignedIn((prev) => !prev);
+  };
+
   return (
     <nav className="bg-gray-800 p-4">
       <div className="container mx-auto flex justify-between items-center">
-        <div className="text-white font-bold text-xl">MyApp</div>
+        <Link to="/" className="text-white font-bold text-xl">
+          MyApp
+        </Link>
         <ul className="flex space-x-6">
           <li>
             <Link
@@ -37,6 +43,18 @@ const NavBar = () => {
             >
               Users
             </Link>
+          </li>
+          <li>
+            <button
+              onClick={handleClick}
+              className={`px-4 py-2 rounded ${
+                signedIn
+                  ? "bg-red-500 hover:bg-red-600"
+                  : "bg-green-500 hover:bg-green-600"
+              } transition duration-300`}
+            >
+              {signedIn ? "Ausloggen" : "Einloggen"}
+            </button>
           </li>
         </ul>
       </div>

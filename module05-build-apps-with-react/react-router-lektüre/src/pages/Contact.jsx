@@ -1,4 +1,12 @@
+import { useOutletContext } from "react-router";
+
 const Contact = () => {
+  const { signedIn } = useOutletContext();
+
+  if (!signedIn) {
+    return <h1>Bitte einloggen!</h1>;
+  }
+
   return (
     <div>
       <h1>Contact Us</h1>
