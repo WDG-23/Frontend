@@ -1,25 +1,15 @@
 import { useState } from "react";
-import { useTodos } from "../context/TodoContext";
-import { ToastContainer, toast, Slide } from "react-toastify";
+import { Slide, ToastContainer, toast } from "react-toastify";
+import { useTodos } from "../context/TodosProvider";
 
 const AddToDo = () => {
-  const { setTodos } = useTodos();
-
+  const { dispatch } = useTodos();
   const [newTodo, setNewTodo] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     if (!newTodo) return;
-
-    setTodos((prevTodos) => {
-      const newState = [
-        { id: Date.now(), text: newTodo, completed: false },
-        ...prevTodos,
-      ];
-      localStorage.setItem("todos", JSON.stringify(newState));
-      return newState;
-    });
+    dispatch({ type: "ADD_TODO", payload: newTodo });
     setNewTodo("");
     toast.success("Neues Todo erstellt");
   };
@@ -36,7 +26,7 @@ const AddToDo = () => {
       />
       <button
         type="submit"
-        className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded cursor-pointer"
+        className="bg-blue-500 text-white px-4 py-2 rounded"
       >
         Add
       </button>
