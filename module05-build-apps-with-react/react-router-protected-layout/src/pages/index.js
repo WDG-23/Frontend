@@ -1,0 +1,7 @@
+export { default as About } from "./About";
+export { default as Contact } from "./Contact";
+export { default as Dashboard } from "./Dashboard";
+export { default as Home } from "./Home";
+export { default as Login } from "./Login";
+export { default as UserProfile } from "./UserProfile";
+export { default as Users } from "./Users";
